@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Clone') {
+    stage('check') {
       steps {
-        git 'https://github.com/AbdelrhmanEzzat/demo-jenkins.git'
+        echo 'Checking the project...'
       }
     }
     stage('Build') {
