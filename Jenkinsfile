@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git 'https://github.com/AbdelrhmanEzzat/jenkins-demo.git'
+        git 'https://github.com/AbdelrhmanEzzat/demo-jenkins.git'
       }
     }
     stage('Build') {
