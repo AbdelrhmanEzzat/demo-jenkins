@@ -4,7 +4,8 @@ pipeline {
   stages {
     stage('Apply K8s Deployment') {
       steps {
-        configFileProvider([configFile(fileId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+        // Set KUBECONFIG env variable to actual file path
+        withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
           sh 'kubectl apply -f deployment.yaml'
         }
       }
@@ -12,7 +13,7 @@ pipeline {
 
     stage('Check Deployment') {
       steps {
-        configFileProvider([configFile(fileId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+        withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
           sh 'kubectl get deployments'
           sh 'kubectl get pods'
         }
