@@ -1,14 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('check') {
+    stage('Echo') {
       steps {
-        echo 'Checking the project...'
-      }
-    }
-    stage('Build') {
-      steps {
-        echo 'Building the project...'
+        echo "This is branch: ${env.BRANCH_NAME}"
       }
     }
   }
