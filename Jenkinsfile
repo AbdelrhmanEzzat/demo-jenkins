@@ -4,7 +4,6 @@ pipeline {
   stages {
     stage('Apply K8s Deployment') {
       steps {
-        // Set KUBECONFIG env variable to actual file path
         withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
           sh 'kubectl apply -f deployment.yaml'
         }
