@@ -1,15 +1,12 @@
-FROM node:18-alpine
+# Use official Python image (lightweight)
+FROM python:3.11-slim
 
+# Set working directory inside container
 WORKDIR /app
 
-# Step 1: copy package.json first
-COPY package.json ./
 
-# Step 2: install dependencies
-RUN npm install --production
-
-# Step 3: copy everything else
+# Copy the rest of your app files
 COPY . .
 
-# Step 4: start your app (example)
-CMD ["node", "index.js"]
+# Command to run your app (change app.py to your main script)
+CMD ["python", "app.py"]
