@@ -1,14 +1,21 @@
 pipeline {
   agent any
+
   stages {
-    stage('check') {
+    stage('Apply K8s Deployment') {
       steps {
-        echo 'Checking the project... From WEB HOOK'
+        script {
+          sh 'kubectl apply -f deployment.yaml'
+        }
       }
     }
-    stage('Build') {
+
+    stage('Check Deployment') {
       steps {
-        echo 'Building the project...'
+        script {
+          sh 'kubectl get deployments'
+          sh 'kubectl get pods'
+        }
       }
     }
   }
